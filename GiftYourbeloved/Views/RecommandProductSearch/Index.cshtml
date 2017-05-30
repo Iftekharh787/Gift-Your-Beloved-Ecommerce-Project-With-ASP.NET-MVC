@@ -1,0 +1,110 @@
+﻿@model IEnumerable<GiftYourbeloved.Models.Productinfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h2> Search Your Choice !</h2>
+<div>
+    
+       @using (Html.BeginForm("SearchByBrand", "RecommandProductSearch", FormMethod.Post))
+       { 
+          
+           <select class="ui dropdown" name="Brand" >
+                <option value="1" >Top Ten</option>
+                <option value="2">Cats Eye</option>
+                 <option value="3">Noir</option>
+                <option value="4">Easy</option>
+                <option value="5">Yellow</option>
+                <option value="6">AdiDas</option>
+                <option value="7">Nike</option>
+                <option value="8">Lotto</option>
+               <option value="9">Rolex</option>
+               <option value="10">Wrist</option>
+               <option value="11">Rose</option>
+               <option value="12">Dahlia</option>
+              
+           </select>
+           <input  type="submit" value="Search Your Choice By Brand Name"/>
+       }
+      
+
+</div>
+
+<div>
+    
+       @using (Html.BeginForm("SearchByCatagory", "RecommandProductSearch", FormMethod.Post))
+       { 
+          
+           <select class="ui dropdown" name="Catagory" >
+                <option value="1" >Shirt</option>
+                <option value="2">Pant</option>
+                 <option value="3">Panjabi</option>
+                <option value="4">Shoes</option>
+                <option value="5">Toys</option>
+                <option value="6">Watch</option>
+                <option value="7">Flower</option>
+           </select>
+           <input  type="submit" value="Search Your Choice By Catagory Name"/>
+       }
+      
+
+</div>
+
+<div>
+    
+       @using (Html.BeginForm("SearchByOccasion", "RecommandProductSearch", FormMethod.Post))
+       { 
+          
+           <select class="ui dropdown" name="occasion" >
+                <option value="1" >Anniversary</option>
+                <option value="2">Birthday</option>
+                 <option value="3">Congratulation</option>
+                <option value="4">Wedding</option>
+                <option value="5">valentine Day</option>
+                <option value="6">All Occation</option>
+           </select>
+           <input  type="submit" value="Search Your Choice in Catagory"/>
+       }
+      
+
+</div>
+<div>
+       @using (Html.BeginForm("SearchByName", "RecommandProductSearch", FormMethod.Post))
+        {    
+                <label>  Search By Product Name  </label>  
+                <input name="SerchProductname" type="text" required/> 
+                <input  type="submit" value="Search"/>  
+        }
+</div>
+
+
+<div>
+     @using (Html.BeginForm("SearchByPrice", "RecommandProductSearch", FormMethod.Post))
+      { 
+            
+      <label>  Search By Product Price :   </label>        
+        <table>
+
+            <tr>
+                <td> 
+                    Min Price:  <input name="lowPrice"type="text" required/>
+                </td>
+                <td> 
+                   Max Price:  <input name="highPrice"type="text" required/>
+                </td>
+
+                <td><input  type="submit" value="Search"/> </td>
+            </tr>
+
+        </table>
+
+    }
+</div>
+
+
+
+
+
+

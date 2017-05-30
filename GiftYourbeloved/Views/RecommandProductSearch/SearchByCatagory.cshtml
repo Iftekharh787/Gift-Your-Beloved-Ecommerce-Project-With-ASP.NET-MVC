@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GiftYourbeloved.Models.Productinfo>
+
+@{
+    ViewBag.Title = "SearchByCatagory";
+}
+
+
+<div class="SearchingName">
+   <h2>Here Is Searching Catagory Product:  </h2>
+</div>
+  <ul class="Product-list">
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("Details", "Productinfo", new { id=item.ID })">
+                      @{
+                          String ImageName = item.Name + item.ID;
+            
+                         <img style="width: 200px; height: 180px; alt="Image"  src="@Url.Content(String.Format("~/Images/Product/{0}.jpg", ImageName))" />
+                       }
+                    <span>@item.Name</span>
+                    </a>
+                </li>
+            }
+    </ul>

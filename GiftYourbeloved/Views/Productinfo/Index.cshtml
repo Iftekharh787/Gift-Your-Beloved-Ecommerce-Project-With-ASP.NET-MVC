@@ -1,0 +1,113 @@
+﻿@model IEnumerable<GiftYourbeloved.Models.Productinfo>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<h1>All Product </h1>
+@if(Session["AdminUserName"]!=null){
+    <h2>Hello Admin </h2>
+    <p>
+        @Html.ActionLink("Add New Product ", "Create")
+        @Html.ActionLink("Add Brand Name", "Create","ProductBrand")
+        @Html.ActionLink("Add Category Name", "Create","ProductCategory")
+        @Html.ActionLink("Add Occation Name", "Create","Occasion")
+    </p>
+    <div>
+         @Html.ActionLink("Product Sold ", "Index","ProductSold")
+    </div>
+
+    <table class="abc">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductBrand.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCategory.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occasion.ProductOccasion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person_tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age_tag)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductBrand.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategory.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occasion.ProductOccasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person_tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age_tag)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>
+
+}
+
+
+        <ul class="Product-list">
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("Details", "Productinfo", new { id=item.ID })">
+                      @{
+                          String ImageName = item.Name + item.ID;
+            
+                         <img style="width: 200px; height: 200px; alt="Image"  src="@Url.Content(String.Format("~/Images/Product/{0}.jpg", ImageName))" />
+                       }
+                    <span>@item.Name</span> </a>
+                </li>
+            }
+        </ul>
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+﻿@model GiftYourbeloved.Models.Occasion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Occasion</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductOccasion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductOccasion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

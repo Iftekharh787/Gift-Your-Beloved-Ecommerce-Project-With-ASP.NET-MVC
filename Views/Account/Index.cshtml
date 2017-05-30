@@ -1,0 +1,68 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<GiftYourbeloved.Models.UserAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Session["UserId"] != null)
+{
+    <h1> Hello @Session["UserName"]   </h1>  
+}
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
+
+    
+   @Html.PagedListPager(Model, page => Url.Action("Index", new { page } ) ,
+      new PagedListRenderOptions () { Display = PagedListDisplayMode.IfNeeded,DisplayPageCountAndCurrentLocation=true }  ) 
+ 
+   
+<div>
+    @Html.ActionLink("Sign Up", "RegisterView")
+     @if (Session["UserName"]!=null){     
+           @Html.ActionLink("LogOut", "logoutview")
+     }
+     @if (Session["UserName"]==null){     
+     
+         @Html.ActionLink("Log IN", "loginView")
+     }
+</div>
